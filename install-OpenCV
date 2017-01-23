@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Script that download and installs the OpenCV library
+# Run this script without root privileges.
+# Copyright: Julio C. Echeverri M. 2017
+
+# Src: http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
+#      http://www.bogotobogo.com/OpenCV/opencv_3_tutorial_ubuntu14_install_cmake.php
+
+# Gets dependencies
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+sudo apt-get install libopencv-dev build-essential checkinstall cmake pkg-config yasm libtiff4-dev libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils ffmpeg
+
+
+# Gets the latest OpenCV from github repo, cloning it in the HOME directory (Downloads up to 420MB)
+cd ${HOME}
+git clone https://github.com/opencv/opencv.git
+cd opencv
+sudo apt-get install qt4-qmake libqt4-dev
+
+mkdir -p release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE\
+      -D CMAKE_INSTALL_PREFIX=/usr/local\
+	  -D WITH_TBB=ON\
+	  -D BUILD_NEW_PYTHON_SUPPORT=ON\
+	  -D WITH_V4L=ON\
+	  -D INSTALL_C_EXAMPLES=ON\
+	  -D INSTALL_PYTHON_EXAMPLES=ON\
+	  -D BUILD_EXAMPLES=ON\
+	  -D WITH_QT=ON ..
+
+make
+sudo make install
+
+echo "********************************************************"
+echo 'OpenCV is now installed in your system'
+# See the OpenCV Version we are running
+echo 'The current version is: '
+pkg-config --modversion opencv
+
+
+
+
