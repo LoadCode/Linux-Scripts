@@ -6,8 +6,11 @@
 
 # Src: http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
 #      http://www.bogotobogo.com/OpenCV/opencv_3_tutorial_ubuntu14_install_cmake.php
+#      https://www.learnopencv.com/how-to-compile-opencv-sample-code/   (AFTER THE SCRIPT FINISHED, YOU CAN NOW COMPILE THE OPENCV EXAMPLES AS SHOW IN THIS WEB)
 
 # Gets dependencies
+sudo add-apt-repository ppa:git-core/ppa # Repo, latest release of git
+sudo apt-get update
 sudo apt-get install build-essential
 sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
@@ -35,11 +38,28 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE\
 make
 sudo make install
 
+sudo mkdir -p /etc/ld.so.conf.d/
+cd /etc/ld.so.conf.d/
+echo '/usr/local/lib/' | sudo tee -a opencv.conf
+sudo ldconfig
+echo 'PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig' >> ~/.bashrc
+echo 'export PKG_CONFIG_PATH' >> ~/.bashrc
+
 echo "********************************************************"
 echo 'OpenCV is now installed in your system'
 # See the OpenCV Version we are running
 echo 'The current version is: '
 pkg-config --modversion opencv
+echo ' '
+echo '****************************************************************'
+echo 'You can now try to copy/paste the following lines to build some examples and verify that OpenCV is OK'
+echo 'The following example requires a webcam to detect your face, otherwise you can compile other examples'
+echo '****************************************************************'
+echo 'cd ~/opencv/samples/cpp/'
+echo 'g++ -ggdb facedetect.cpp -o facedetect `pkg-config --cflags --libs opencv`'
+echo './facedetect'
+
+
 
 
 
