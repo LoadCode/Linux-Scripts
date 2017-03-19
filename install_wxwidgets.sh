@@ -9,7 +9,7 @@ sudo apt-get install libgtk-3-dev build-essential checkinstall
 
 cd ${HOME}
 
-# Gets the latest stable release (sinse March 2017)
+# Gets the latest stable release (until March 2017)
 wget -O wxWidgets.tar.bz2 https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.2/wxWidgets-3.0.2.tar.bz2
 tar -jxvf wxWidgets.tar.bz2
 cd wxWidgets-3.0.2/
