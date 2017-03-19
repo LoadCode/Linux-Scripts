@@ -1,6 +1,7 @@
 #/bin/bash
-
-# This will installs the latest stable release of wxWidgets library on your Linux system
+# Author: Julio César Echeverri Marulanda  <julio.em7@gmail.com>
+#
+# This script will install the latest stable release of wxWidgets library on your Linux system
 # Don't run this script as root user, just enter your password when you be sked for it.
 
 # Gets some dependencies
@@ -37,16 +38,17 @@ printf "y\n${DESCRIPTION}\n\n0\n${MAINTAINER}\n2\n${PKGNAME}\n3\n${VERSION}\n8\n
 # Clean all the things
 cd ${HOME}
 rm wxWidgets.tar.bz2
+rm -rf wxWidgets-3.0.2/
 
 echo " "
 echo " "
-echo "******************************************************************************"
+echo "********************************************************************************************************************"
 echo "Congratulations, you installed the wxWidgets library."
-echo "You can now build a wxWidgets base application."
-echo "At the end of the following web you can see an build an example to test this installation process"
+echo "You can now build a wxWidgets based application."
+echo "At the end of the following web you can see and build an example to test the success of this installation process"
 echo " "
 echo "https://julioecheverri.wordpress.com/2016/07/21/como-compilar-e-instalar-wxwidgets-en-debianubuntulinuxmint-y-derivados/"
 echo " "
-echo "******************************************************************************"
+echo "********************************************************************************************************************"
 
 
