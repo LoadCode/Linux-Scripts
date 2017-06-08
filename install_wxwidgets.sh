@@ -10,9 +10,9 @@ sudo apt-get install libgtk-3-dev build-essential checkinstall
 cd ${HOME}
 
 # Gets the latest stable release (until March 2017)
-wget -O wxWidgets.tar.bz2 https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.2/wxWidgets-3.0.2.tar.bz2
+wget -O wxWidgets.tar.bz2 https://github.com/wxWidgets/wxWidgets/archive/v3.0.3.1.zip
 tar -jxvf wxWidgets.tar.bz2
-cd wxWidgets-3.0.2/
+cd wxWidgets-*/
 mkdir -p my_build
 cd my_build/
 
@@ -27,7 +27,7 @@ chmod u+x install_widgets.sh
 # Installation with checkinstall (this script automatically answer the questions)
 DESCRIPTION="The wxWidgets Package"
 PKGNAME="wxWidgets"
-VERSION="3.0.2"
+VERSION="3.0.3.1"
 REQUIREMENTS="libgtk-3-dev build-essential"
 MAINTAINER="wxwidgets.org (script by Julio Echeverri)"
 LOCATION=${PWD}
@@ -38,7 +38,7 @@ printf "y\n${DESCRIPTION}\n\n0\n${MAINTAINER}\n2\n${PKGNAME}\n3\n${VERSION}\n8\n
 # Clean all the things
 cd ${HOME}
 rm wxWidgets.tar.bz2
-rm -rf wxWidgets-3.0.2/
+rm -rf wxWidgets-3.0.*/
 
 echo " "
 echo " "
